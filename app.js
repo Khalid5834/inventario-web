@@ -1,5 +1,5 @@
 // 🔹 SUPABASE CONFIG
-const supabase = supabase.createClient(
+const supabaseClient = supabase.createClient(
   "https://xdxorvuumktgwaaqonsb.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkeG9ydnV1bWt0Z3dhYXFvbnNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4MTc0MzQsImV4cCI6MjA4NTM5MzQzNH0.uEW2_HPLOpT9J4N7OVhqkgOOAFDsj7Ktn4VxorFMh38"
 );
@@ -31,7 +31,7 @@ csvInput.addEventListener("change", async (e) => {
     price = redondearPrecio(price);
 
     // UPSERT (actualiza si existe, crea si no)
-    await supabase.from("products").upsert({
+    await supabaseClient.from("products").upsert({
       name,
       price
     }, { onConflict: "name" });
@@ -44,7 +44,7 @@ csvInput.addEventListener("change", async (e) => {
 async function cargarProductos() {
   tableBody.innerHTML = "";
 
-  const { data } = await supabase.from("products").select("*");
+  const { data } = await supabaseClient.from("products").select("*");
 
   data.forEach(prod => {
     const tr = document.createElement("tr");
@@ -59,7 +59,7 @@ async function cargarProductos() {
       const newName = tr.children[0].children[0].value;
       const newPrice = parseFloat(tr.children[1].children[0].value);
 
-      await supabase.from("products").update({
+      await supabaseCLient.from("products").update({
         name: newName,
         price: newPrice,
         updated_at: new Date()
