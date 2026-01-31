@@ -1,7 +1,7 @@
 // 🔹 SUPABASE CONFIG
 const supabase = supabase.createClient(
-  "TU_SUPABASE_URL",
-  "TU_SUPABASE_ANON_KEY"
+  "https://xdxorvuumktgwaaqonsb.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkeG9ydnV1bWt0Z3dhYXFvbnNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4MTc0MzQsImV4cCI6MjA4NTM5MzQzNH0.uEW2_HPLOpT9J4N7OVhqkgOOAFDsj7Ktn4VxorFMh38"
 );
 
 const tableBody = document.getElementById("productTable");
